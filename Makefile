@@ -69,6 +69,11 @@ build-arty-35: sw-led
 	fusesoc --cores-root=. run --target=synth --setup --build \
 		lowrisc:ibex:top_artya7 --part xc7a35ticsg324-1L
 
+.PHONY: build-cmod-a7-35
+build-cmod-a7-35: sw-led
+	fusesoc --cores-root=. run --target=synth --setup --build \
+		lowrisc:ibex:top_artya7 --part xc7a35tcpg236-1
+
 .PHONY: build-arty-100
 build-arty-100: sw-led
 	fusesoc --cores-root=. run --target=synth --setup --build \
