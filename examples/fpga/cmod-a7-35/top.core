@@ -8,7 +8,7 @@ filesets:
   files_rtl:
     depend:
       - lowrisc:ibex:ibex_core
-      - lowrisc:ibex:fpga_xilinx_shared
+      - lowrisc:ibex:fpga_xilinx_cmod_a7_35_shared
     files:
       - rtl/top.sv
     file_type: systemVerilogSource
