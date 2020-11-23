@@ -56,26 +56,25 @@ run-simple-system: sw-simple-hello | $(Vibex_simple_system)
 # Use the following targets (depending on your hardware):
 # - "build-arty-35"
 # - "build-arty-100"
+# - "build-cmod-a7-35"
 # - "program-arty"
-arty-sw-program = examples/sw/led/led.vmem
-sw-led: $(arty-sw-program)
 
-.PHONY: $(arty-sw-program)
-$(arty-sw-program):
-	cd examples/sw/led && $(MAKE)
+.PHONY: arty-sw-program
+arty-sw-program:
+	cd examples/sw/led && make
 
 .PHONY: build-arty-35
-build-arty-35: sw-led
+build-arty-35: arty-sw-program
 	fusesoc --cores-root=. run --target=synth --setup --build \
 		lowrisc:ibex:top_artya7 --part xc7a35ticsg324-1L
 
 .PHONY: build-cmod-a7-35
-build-cmod-a7-35: sw-led
+build-cmod-a7-35: arty-sw-program
 	fusesoc --cores-root=. run --target=synth --setup --build \
-		lowrisc:ibex:top_artya7 --part xc7a35tcpg236-1
+		lowrisc:ibex:top_cmoda735 --part xc7a35tcpg236-1
 
 .PHONY: build-arty-100
-build-arty-100: sw-led
+build-arty-100: arty-sw-program
 	fusesoc --cores-root=. run --target=synth --setup --build \
 		lowrisc:ibex:top_artya7 --part xc7a100tcsg324-1
 
